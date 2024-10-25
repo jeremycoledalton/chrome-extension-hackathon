@@ -1,14 +1,20 @@
 {
+  "manifest_version": 3,
   "name": "Hello Extensions",
   "description": "Base Level Extension",
   "version": "1.0",
-  "manifest_version": 3,
-  "action": {
-    "default_popup": "hello.html"
-  },
+  "content_scripts": [
+    {
+      "js": ["findDiv.js"],
+      "matches": ["*://*/*"]
+    }
+  ],
   "background": {
-    "scripts": "background.js",
-    "persistent": false
+    "service_worker": "service-worker.js"
   },
-  "permissions": ["scripting", "activeTab"]
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": "TLDR.jpg"
+  },
+  "permissions": ["scripting", "activeTab", "storage", "tabs"]
 }
